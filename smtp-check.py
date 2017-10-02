@@ -23,15 +23,16 @@ def user_verify(ip,port,userlist):
 		s.connect((ip,port))
 		s.recv(1024)
 	except:
-		print 'Oops can\'t connect to '+str(ip)+' with port '+str(port)
-		pass
+		print 'Oops can\'t connect to '+ip+' with port '+str(port)
 	for user in userlist:
 		s.send('VRFY '+user+'\r\n')
 		res = s.recv(1024)
-		if "252" in res:
+		#print res
+		if "250" in res:
 			result.append(user)
-		elif "250" in res:
-			result.append(user)
+		elif "252" in res:
+			#result.append(user)
+			result
 	s.close()
 	return result
 
@@ -53,7 +54,7 @@ def main(argv):
 	usernamelist = ''
 
 	try:
-		opts, args = getopt.getopt(argv,"hs:S:pu:U:",["server=","Serverlist=","port=","username=","Usernamelist="])
+		opts, args = getopt.getopt(argv,"hs:S:p:u:U:",["server=","Serverlist=","port=","username=","Usernamelist="])
 	except getopt.GetoptError:
 		print 'smtp-check.py -s <server> -S <Serverlist> -p <port> -u <username> -U <Usernamelist>'
 		sys.exit(2)
