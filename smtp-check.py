@@ -1,5 +1,6 @@
 #!/usr/bin/python
 
+#we will use cmd style of our script - just for practice and for usability
 import sys,getopt,smtplib,fileinput
 
 def main(argv):
@@ -30,20 +31,20 @@ def main(argv):
 		elif opt in ('-U','--Usernamelist'):
 			usernamelist = arg
 
-
-
-        conn = smtplib.SMTP(server,port)
-        #conn.set_debuglevel(True)
-        try:
-                result = conn.verify(username)
-        finally:
-                conn.quit()
-        print result
+#old version of usage will be deleted
+			conn = smtplib.SMTP(server,port)
+			#debug mode
+			#conn.set_debuglevel(True)
+			try:
+				result = conn.verify(username)
+			finally:
+				conn.quit()
+			print result
 
 if __name__ == "__main__":
         main(sys.argv[1:])
 
-
+#function that split cmd strings and filelines in one list
 def get_data(data,datafile):
 	result = []
 		if datafile:
