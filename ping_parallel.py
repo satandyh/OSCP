@@ -20,8 +20,10 @@ def net_ping(ips):
 
 def net_range():
 	net = []
+	#change range of DD, where AA.BB.CC.DD
 	for ip in range(1,254):
-		net.append("10.11.1." + str(ip))
+		#change ip range for yourself in next format AA.BB.CC.
+		net.append("10.0.0." + str(ip))
 	return net
 
 print net_ping(net_range())
