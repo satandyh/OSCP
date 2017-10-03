@@ -30,9 +30,9 @@ def user_verify(ip,port,userlist):
 		#print res
 		if "250" in res:
 			result.append(user)
-		elif "252" in res:
-			#result.append(user)
-			result
+		##I need only registered users ;-)
+		#elif "252" in res:
+		#	result.append(user)
 	s.close()
 	return result
 
