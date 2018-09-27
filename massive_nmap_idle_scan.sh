@@ -1,9 +1,10 @@
 #!/bin/bash
 
+# надо докинуть ввод переменных как параметров к скрипту
 # наша цель
 target="xx.xx.xx.xx"
 # считываем файл с ip адресами zombi в массив
-file="/home/ant/Documents/test"
+file="zombies"
 readarray zombi < $file
 # количество наших zombi
 zc=${#zombi[*]}
