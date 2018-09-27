@@ -1,2 +1,1 @@
-# OSCP
-Just some of my scripts for OSCP labs
+Just some of my scripts
