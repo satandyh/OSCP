@@ -1,4 +1,3 @@
-Just some of my scripts
 * * *
 # nmap_ndiff.sh
 
