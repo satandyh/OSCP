@@ -1,23 +1,18 @@
 #!/bin/sh
 
-targets="targets.txt"
-options="-v -T4 -F -sV"
-date=$(date +%F)
+targets="/opt/scans/targets.txt"
+options="-v -sV --script vulners"
+date=$(date +%Y%m%d-%H%M%S)
 dir="/opt/scans"
 
 cd $dir || exit 2
-nmap $options -iL $dir/$targets -oA scan-$date > /dev/null
+nmap $options -iL "$targets" -oA "scan_$date" > /dev/null
 
-if [ -e scan-prev.xml ] && [ -e "$dir/$targets" ]; then
-
-    ndiff scan-prev.xml scan-$date.xml > diff-$date.xml
-#    echo "*** NDIFF RESULTS ***"
-    cat diff-$date.xml
-#    echo
+if [ -e scan_prev.xml ] && [ -e "$targets" ]; then
+    ndiff scan_prev.xml "scan_$date.xml" > "diff_$date.xml"
+#    cat "diff_$date.xml"
 fi
 
-#echo "*** NMAP RESULTS ***"
-#cat scan-$date.nmap
-ln -sf scan-$date.xml scan-prev.xml
-
+#cat "scan_$date.nmap"
+ln -sf "scan_$date.xml" scan-prev.xml
 exit 0
