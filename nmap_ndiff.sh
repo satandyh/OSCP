@@ -15,7 +15,7 @@ curl -F "file=@diff_$date" \
 cd $dir || exit 2
 nmap $options -iL "$targets" -oA "scan_$date" > /dev/null
 
-if [ -e scan_prev.xml ] && [ -e "$targets" ]; then
+if [ -e scan_prev.xml ]; then
     ndiff scan_prev.xml "scan_$date.xml" > "diff_$date"
     [ "$?" -eq "1" ] && sed -i -e 1,3d diff_$date && slack
 fi
