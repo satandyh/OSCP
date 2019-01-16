@@ -1,7 +1,7 @@
 #!/bin/sh
 
 targets="/opt/scans/targets.txt"
-options="-v -sV --script vulners"
+options="-v -sV --script vulners,vulscan/vulscan.nse --script-args vulscandb=vulscan/exploitdb.csv"
 date=$(date +%Y%m%d-%H%M%S)
 dir="/opt/scans"
 
